@@ -1,0 +1,126 @@
+\documentclass[11pt,a4paper]{article}
+
+\usepackage[a4paper,top=1.6cm,bottom=1.6cm,left=1.9cm,right=1.9cm]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{tabularx}
+\usepackage[hidelinks]{hyperref}
+
+\setlength{\parskip}{3pt plus 1pt}
+\setlength{\parindent}{0pt}
+\linespread{0.98}
+
+\makeatletter
+\renewcommand\section{\@startsection{section}{1}{\z@}%
+                                    {7pt \@plus 1pt \@minus 1pt}%
+                                    {3pt}%
+                                    {\normalfont\normalsize\bfseries}}
+\makeatother
+
+\title{\vspace{-1.6cm}\textbf{Bayesian Search --- Streamlit App User Guide}\\
+       \normalsize Jose Calatayud Mateu \,\textbullet\, University of Barcelona \,\textbullet\, Bayesian Inference}
+\author{}
+\date{}
+
+\begin{document}
+\maketitle
+\vspace{-1.4cm}
+
+\begin{center}\small
+Live app:
+\href{https://appapppy-femambu7sdfwgwutujck7f.streamlit.app}%
+     {\texttt{appapppy-femambu7sdfwgwutujck7f.streamlit.app}}
+\end{center}
+
+\section{What the app does}
+
+Interactive companion to Deliverable~2. It lets you (i) inspect each of the
+twelve priors over the unknown cell $Z$, (ii) inspect the four detection
+models $\rho_j(d,r,e)$, (iii) preview what each of the four search
+strategies would propose given the current prior and detector, (iv) run a
+full interactive search campaign against a planted target, and (v) view the
+final operational pipeline applied end-to-end. All maps are computed
+live; no MCMC is required at runtime (Laplace / cell-level update only).
+
+\section{Sidebar --- global configuration}
+
+Four controls live in the left sidebar and apply across all tabs:
+
+\smallskip
+\begin{tabularx}{\linewidth}{@{}lX@{}}
+  \textit{Prior}
+    & one of the twelve registered priors P3--P14. Default is the
+      operational pick \texttt{P13\char`_impact\char`_robust\char`_uniform10}. \\
+  \textit{Detector}
+    & one of the four detector families D1--D4. Default is
+      \texttt{D1\char`_saturating\char`_exponential}. \\
+  \textit{Update temperature}
+    & $T \ge 1$ in $\pi_{\mathrm{post}}(j) \propto \pi_{\mathrm{prior}}(j)\,L_j^T$.
+      $T=1$ is the textbook Bayes rule; $T=1.5$ amplifies the
+      partial-failure signal (operational default). \\
+  \textit{Budget cap}
+    & total cost allowed across the campaign (max $530$). \\
+\end{tabularx}
+
+\section{The six tabs}
+
+\textit{1. Overview.} Plots the accident point $x_E$, the velocity vectors
+$(v_{\mathrm{plane}}, v_{\mathrm{wind}}, v_{\mathrm{drift}})$, the expected
+impact $\mu(\tau_{\mathrm{fall}}, \tau_{\mathrm{drift}})$ and the
+trajectory axes $(\hat d, \hat n)$. Useful to build intuition before
+playing with priors.
+
+\textit{2. Priors.} Heatmap of the selected prior plus a $4{\times}3$ grid
+of all twelve priors at the same colour scale --- the place to compare how
+much each prior concentrates around $\mu$ versus spreading laterally.
+
+\textit{3. Detectors.} Heatmap of $\rho_j$ for the selected detector at
+the chosen effort $e\in\{1,2,3\}$, plus the four detector families side by
+side at the same effort.
+
+\textit{4. Strategy preview.} For the current (prior, detector) it shows
+what each of the four strategies (\textsc{fixed}, \textsc{adaptive},
+\textsc{info\_gain}, \textsc{progressive scenario search}) would propose
+as the next rectangle and effort. No mission is executed.
+
+\textit{5. Simulator.} The main interactive page. Plant a target (manual
+cell or random), then either fire a mission manually
+(rectangle + effort) or let the selected strategy propose one and execute.
+The outcome $s_t\in\{0,1\}$ is drawn from the true detector, the cell-level
+posterior is updated with temperature $T$, the heatmap refreshes, and the
+mission is appended to the on-screen history table. Budget and entropy
+counters update live.
+
+\textit{6. Operational model.} The final delivered pipeline executed
+end-to-end with no user input: prior \texttt{P13}, detector
+\texttt{D1\char`_saturating\char`_exponential}, strategy
+\textit{progressive scenario search} with the \texttt{mixture} hypothesis,
+budget $B=530$. Shows the full mission sequence under repeated
+non-detection (the \texttt{missions.csv} export), the final posterior, and
+the per-mission posterior evolution.
+
+\section{Typical walkthroughs}
+
+\textit{To compare priors.} Tab~2, eyeball the $4{\times}3$ grid, switch
+the sidebar prior to see the selected one larger.
+
+\textit{To compare strategies on a single state.} Tab~4 with a fixed
+sidebar (prior, detector).
+
+\textit{To run a complete campaign by hand.} Tab~5, plant a target, pick
+the strategy you want from the dropdown inside the tab, click \emph{run
+mission} repeatedly until the budget is exhausted or the target is found.
+
+\textit{To reproduce the deliverable.} Tab~6, no clicks needed --- it
+re-executes the same configuration that produced \texttt{missions.csv}.
+
+\section{Reset and caching}
+
+All priors and detector maps are cached (\texttt{st.cache\char`_data}). If
+you change the sidebar values the affected tabs recompute; the others reuse
+the cache. To clear simulator state (planted target, mission history),
+press \emph{Reset} at the top of tab~5.
+
+\end{document}
