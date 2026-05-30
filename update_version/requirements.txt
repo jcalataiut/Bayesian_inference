@@ -1,0 +1,9 @@
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+scipy>=1.10
+pymc>=5.10
+arviz>=0.16
+streamlit>=1.30
+h5py>=3.10            # required by arviz to write MCMC cache (.nc)
+netcdf4>=1.6          # backup netcdf engine

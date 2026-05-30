@@ -1,0 +1,13 @@
+strategy,prior,detection_rate,mean_missions,mean_budget_used,mean_argmax_error
+info_gain,drift,0.2,195.9,195.9,4.723006581238349
+info_gain,drift+witnesses,0.2,212.4,212.4,5.773243732867234
+info_gain,drift+witnesses+deep,0.2,213.0,213.0,5.647919571573349
+max_expected_detection,drift,0.2,196.4,196.4,4.4113328894522255
+max_expected_detection,drift+witnesses,0.2,214.1,214.1,5.647919571573349
+max_expected_detection,drift+witnesses+deep,0.2,214.6,214.6,6.489796238926878
+max_posterior_rect,drift,0.2,2.9,229.4,5.920956167544021
+info_gain,uniform,0.0,230.0,230.0,16.473113249499555
+max_expected_detection,uniform,0.0,230.0,230.0,16.473113249499555
+max_posterior_rect,drift+witnesses,0.0,3.0,230.0,6.669743289567326
+max_posterior_rect,drift+witnesses+deep,0.0,3.0,230.0,6.731050527385051
+max_posterior_rect,uniform,0.0,3.0,230.0,21.196583101629535

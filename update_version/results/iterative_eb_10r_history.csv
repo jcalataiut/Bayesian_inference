@@ -1,0 +1,11 @@
+round,train_best_prior,train_best_update,train_detection_rate,val_best_prior,val_best_update,val_detection_rate,val_mean_cost_used,elapsed_s
+0,P3_quadratic_nowit_informative,explore_x1_5,0.4583333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,124.90711522102356
+1,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,309.2323338985443
+2,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,503.99910402297974
+3,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,675.9414620399475
+4,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,847.8684759140015
+5,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,1020.3863921165466
+6,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,1189.473533153534
+7,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,1361.0016169548035
+8,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,1530.9548921585083
+9,EB_r01_bw3.5_u15,explore_x1_5,0.5333333333333333,P3_quadratic_nowit_informative,explore_x1_5,0.475,363.64166666666665,1700.819286108017

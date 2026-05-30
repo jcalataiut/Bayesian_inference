@@ -1,0 +1,3 @@
+round,train_best_prior,train_best_update,train_detection_rate,val_best_prior,val_best_update,val_detection_rate,val_mean_cost_used,elapsed_s
+0,P6_mixed_wit_informative,lik_x2,0.4166666666666667,P3_quadratic_nowit_informative,explore_x1_5,0.4375,388.0,15.618639945983887
+1,EB_r01_bw3.5_u15,explore_x1_5,0.5,EB_r01_bw2.5_u10,soft_x0_75,0.5625,385.75,35.6876859664917
