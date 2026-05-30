@@ -1,0 +1,8 @@
+# Runtime dependencies for the Streamlit Cloud deployment.
+# The full deliverable (notebooks + MCMC) also needs pymc / arviz / h5py /
+# netcdf4 / scipy — listed in update_version/requirements.txt — but those are
+# not loaded by the Streamlit app at runtime and would slow Cloud builds.
+numpy>=1.24
+pandas>=2.0
+matplotlib>=3.7
+streamlit>=1.30
